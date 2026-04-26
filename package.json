@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "prebuild": "node scripts/generate-og-share.mjs",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
@@ -15,6 +16,7 @@
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
+    "sharp": "^0.33.5",
     "typescript": "^5.7.0"
   }
 }

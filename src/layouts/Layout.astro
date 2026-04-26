@@ -5,7 +5,7 @@ import { ViewTransitions } from 'astro:transitions';
 interface Props {
   title: string;
   description?: string;
-  /** public 配下のパス。未指定時は薬理道場のキービジュアル */
+  /** public 配下のパス。未指定時はビルド生成の横長 OGP（上寄せトリミング） */
   ogImage?: string;
   /** Open Graph / Twitter 用。既定は website */
   ogType?: 'website' | 'article';
@@ -16,7 +16,7 @@ interface Props {
 const {
   title,
   description = '薬剤師、薬学生向けに役立つものを開発・公開しています。試してみてください',
-  ogImage: ogImagePath = '/images/yakuridojo.png',
+  ogImage: ogImagePath = '/images/og-share.png',
   ogType = 'website',
   noindex = false,
 } = Astro.props;
@@ -29,6 +29,8 @@ const siteRoot = Astro.site
   : `${Astro.url.origin}/`;
 /** 絶対 URL（SNS カード用）。`site` + public 内パス。 */
 const imageUrl = new URL(ogImagePath.replace(/^\//, ''), siteRoot).href;
+/** アイコン用（正方形のまま。OG 横長とは分離） */
+const touchIconUrl = new URL('images/yakuridojo.png', siteRoot).href;
 /** 現在ページの正規の絶対 URL */
 const pagePath = (Astro.url.pathname + Astro.url.search).replace(/^\//, '');
 const pageUrl = new URL(pagePath, siteRoot).href;
@@ -52,7 +54,7 @@ const themeColor = '#0e7490';
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href={imageUrl} />
+    <link rel="apple-touch-icon" href={touchIconUrl} />
     <link rel="canonical" href={pageUrl} />
 
     <meta name="author" content={siteName} />
@@ -75,6 +77,12 @@ const themeColor = '#0e7490';
       content="薬理道場 ― キービジュアル（アプリ紹介の共有プレビュー用）"
     />
     <meta property="og:image:type" content="image/png" />
+    {ogImagePath === '/images/og-share.png' && (
+      <>
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+      </>
+    )}
 
     <!-- X (Twitter) Card -->
     <meta name="twitter:card" content="summary_large_image" />
