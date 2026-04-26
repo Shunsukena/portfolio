@@ -1,0 +1,58 @@
+---
+import { apps, categories, type AppCategory } from '../data/projects';
+import AppCard from './AppCard.astro';
+
+const byCategory = (id: AppCategory) => apps.filter((a) => a.category === id);
+---
+
+<section
+  id="apps"
+  class="mx-auto w-full max-w-md scroll-mt-8 px-4 py-10"
+  aria-labelledby="apps-heading"
+>
+  <div class="mb-6 flex flex-col gap-1">
+    <div>
+      <h2
+        id="apps-heading"
+        class="font-display text-2xl font-semibold tracking-tight text-slate-900"
+      >
+        アプリ
+      </h2>
+    </div>
+  </div>
+
+  {
+    categories.map((cat) => {
+      const list = byCategory(cat.id);
+      if (list.length === 0) {
+        return null;
+      }
+      return (
+        <div id={`cat-${cat.id}`} class="scroll-mt-20">
+          <div class="mb-3 flex items-center gap-2 pr-1">
+            <span class="text-xl" aria-hidden="true">
+              {cat.emoji}
+            </span>
+            <h3 class="font-display text-lg font-medium text-slate-800">
+              {cat.label}
+            </h3>
+            <span class="h-px min-w-0 flex-1 bg-gradient-to-r from-slate-300/80 to-transparent" />
+          </div>
+          <p class="mb-2 text-xs text-slate-500" aria-hidden="true">
+            横にスワイプして他のアプリを表示
+          </p>
+          <ul
+            class="h-scroll mb-10 w-full list-none [padding-inline:0]"
+            aria-label={`${cat.label}の一覧。左右にスワイプで閲覧できます。`}
+          >
+            {list.map((app) => (
+              <li class="w-72 shrink-0 snap-center">
+                <AppCard app={app} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    })
+  }
+</section>

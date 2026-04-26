@@ -1,0 +1,30 @@
+---
+import { categories } from '../data/projects';
+---
+
+<nav
+  class="mx-auto flex w-full max-w-md flex-nowrap items-center gap-2 overflow-x-auto overscroll-x-contain px-4 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:px-4 [&::-webkit-scrollbar]:hidden"
+  aria-label="カテゴリへジャンプ"
+>
+  {
+    [
+      { id: 'all', href: '#apps', label: 'すべて', emoji: '✦' as const },
+      ...categories.map((c) => ({
+        id: c.id,
+        href: `#cat-${c.id}`,
+        label: c.label,
+        emoji: c.emoji,
+      })),
+    ].map((c) => (
+      <a
+        href={c.href}
+        class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/90 px-3.5 py-1.5 text-sm text-slate-700 shadow-sm transition hover:border-cyan-200 hover:bg-cyan-50/80 hover:text-cyan-800"
+      >
+        <span aria-hidden="true" class="select-none text-base leading-none">
+          {c.emoji}
+        </span>
+        {c.label}
+      </a>
+    ))
+  }
+</nav>

@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply min-h-svh bg-slate-300/90 font-sans antialiased text-slate-800;
+  }
+  ::selection {
+    @apply bg-cyan-200/80 text-slate-900;
+  }
+  a:focus-visible {
+    @apply rounded-sm outline outline-2 outline-offset-2 outline-cyan-600/70;
+  }
+}
+
+@layer utilities {
+  .app-shell {
+    @apply min-h-svh max-w-md;
+    @apply bg-slate-200/50;
+    box-shadow:
+      0 0 0 1px oklch(0.5 0.02 255 / 0.1),
+      0 25px 50px -12px oklch(0.2 0.02 255 / 0.2);
+  }
+
+  /** アプリ欄より上: 青〜シアン系（ヒーロー・ナビ帯） */
+  .app-region-top {
+    @apply border-b border-cyan-200/50;
+    background: linear-gradient(
+      180deg,
+      oklch(0.9 0.06 230) 0%,
+      oklch(0.94 0.045 215) 35%,
+      oklch(0.97 0.03 200) 70%,
+      oklch(0.99 0.02 250) 100%
+    );
+  }
+
+  /** アプリ一覧以降: 明るいニュートラル（本文・区別用） */
+  .app-region-bottom {
+    @apply min-h-0;
+    background: linear-gradient(
+      165deg,
+      oklch(0.995 0.012 260) 0%,
+        oklch(0.99 0.018 230) 40%,
+        oklch(0.98 0.025 280) 100%
+    );
+  }
+
+  .legal-page {
+    @apply max-w-md;
+    background: linear-gradient(
+      165deg,
+      oklch(0.995 0.012 260) 0%,
+      oklch(0.99 0.018 230) 50%,
+      oklch(0.98 0.02 280) 100%
+    );
+  }
+  .h-scroll {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 1rem;
+    scroll-padding-right: 1rem;
+    scrollbar-width: thin;
+  }
+}

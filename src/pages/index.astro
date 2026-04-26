@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Hero from '../components/Hero.astro';
+import CategoryPills from '../components/CategoryPills.astro';
+import AppsByCategory from '../components/AppsByCategory.astro';
+import ContactCta from '../components/ContactCta.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const formUrl = 'https://forms.gle/YQCRc1M4JLJRrVVq9';
+---
+
+<Layout
+  title="yanachan apps | ポートフォリオ"
+  description="薬剤師、薬学生向けに役立つものを開発・公開しています。"
+>
+  <div class="app-shell relative mx-auto w-full">
+    <main>
+      <div class="app-region-top">
+        <SiteHeader />
+        <Hero
+          brand="yanachan apps"
+          tagline="薬剤師、薬学生向けに役立つものを開発・公開しています。"
+        />
+        <div class="pb-4">
+          <CategoryPills />
+        </div>
+      </div>
+      <div class="app-region-bottom">
+        <AppsByCategory />
+        <ContactCta formUrl={formUrl} />
+      </div>
+    </main>
+    <SiteFooter />
+  </div>
+</Layout>

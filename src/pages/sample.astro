@@ -1,0 +1,21 @@
+---
+/**
+ * サンプルページ: レイアウトとスロットの使い方の最小例です。
+ * 本番では削除してかまいません。
+ */
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Sample | yanachan apps"
+  description="Astro + Tailwind のサンプルページ。"
+>
+  <section class="mx-auto max-w-2xl px-4 py-16">
+    <h1 class="font-display text-3xl font-semibold text-slate-900">Sample</h1>
+    <p class="mt-3 text-slate-600">
+      新規セクションを追加する際は、このファイルを複製するか
+      <code class="rounded border border-slate-200 bg-slate-100 px-1.5 py-0.5 text-cyan-800"
+        >index.astro</code> にコンポーネントを差し込んでください。
+    </p>
+  </section>
+</Layout>
