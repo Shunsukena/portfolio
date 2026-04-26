@@ -5,26 +5,111 @@ import { ViewTransitions } from 'astro:transitions';
 interface Props {
   title: string;
   description?: string;
+  /** public 配下のパス。未指定時は薬理道場のキービジュアル */
+  ogImage?: string;
+  /** Open Graph / Twitter 用。既定は website */
+  ogType?: 'website' | 'article';
+  /** 検索に載せたくないページ向け */
+  noindex?: boolean;
 }
 
-const { title, description = '薬剤師、薬学生向けに役立つものを開発・公開しています。試してみてください' } = Astro.props;
+const {
+  title,
+  description = '薬剤師、薬学生向けに役立つものを開発・公開しています。試してみてください',
+  ogImage: ogImagePath = '/images/yakuridojo.png',
+  ogType = 'website',
+  noindex = false,
+} = Astro.props;
+
+/** 公開サイトの根（Astro.config の `site`）。未設定時はローカル origin。 */
+const siteRoot = Astro.site
+  ? (String(Astro.site).endsWith('/')
+      ? String(Astro.site)
+      : `${String(Astro.site)}/`)
+  : `${Astro.url.origin}/`;
+/** 絶対 URL（SNS カード用）。`site` + public 内パス。 */
+const imageUrl = new URL(ogImagePath.replace(/^\//, ''), siteRoot).href;
+/** 現在ページの正規の絶対 URL */
+const pagePath = (Astro.url.pathname + Astro.url.search).replace(/^\//, '');
+const pageUrl = new URL(pagePath, siteRoot).href;
+const websiteUrl = new URL('./', siteRoot).href;
+
+const siteName = 'yanachan apps';
+const ogTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+const themeColor = '#0e7490';
 ---
 
 <!doctype html>
-<html lang="ja">
+<html lang="ja" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <title>{ogTitle}</title>
+    <meta name="title" content={ogTitle} />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href={imageUrl} />
+    <link rel="canonical" href={pageUrl} />
+
+    <meta name="author" content={siteName} />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content={themeColor} />
+    <meta name="msapplication-TileColor" content={themeColor} />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:secure_url" content={imageUrl} />
+    <meta
+      property="og:image:alt"
+      content="薬理道場 ― キービジュアル（アプリ紹介の共有プレビュー用）"
+    />
+    <meta property="og:image:type" content="image/png" />
+
+    <!-- X (Twitter) Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta
+      name="twitter:image:alt"
+      content="薬理道場 ― yanachan apps ポートフォリオのプレビュー画像"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>{title}</title>
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: siteName,
+        url: websiteUrl,
+        description: description,
+        inLanguage: 'ja-JP',
+        publisher: {
+          '@type': 'Organization',
+          name: siteName,
+          sameAs: ['https://x.com/Yanachan3pharma'],
+        },
+      })}
+    />
+
     <ViewTransitions />
   </head>
   <body class="relative overflow-x-hidden">
