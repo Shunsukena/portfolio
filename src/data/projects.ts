@@ -50,4 +50,14 @@ export const apps: PortfolioApp[] = [
     image: '/images/soft-ointment-card.png',
     imageAlt: '軟膏カード アプリアイコン',
   },
+  {
+    title: '薬なまえカード',
+    description:
+      '薬の先発名と一般名をこれで暗記！\nクイズ・辞書機能もあります。',
+    category: 'memorize',
+    status: 'live',
+    href: 'https://apps.apple.com/jp/app/%E8%96%AC%E3%81%AA%E3%81%BE%E3%81%88%E3%82%AB%E3%83%BC%E3%83%89/id6763898619',
+    image: '/images/yaku-namae-card.png',
+    imageAlt: '薬なまえカード アプリアイコン',
+  },
 ];
