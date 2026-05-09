@@ -1,4 +1,4 @@
-export type AppCategory = 'game' | 'memorize';
+export type AppCategory = 'game' | 'memorize' | 'utility';
 
 export type AppStatus = 'live' | 'beta' | 'coming';
 
@@ -17,6 +17,7 @@ export interface PortfolioApp {
 export const categories: { id: AppCategory; label: string; emoji: string }[] = [
   { id: 'game', label: 'ゲーム', emoji: '🎮' },
   { id: 'memorize', label: '暗記', emoji: '📇' },
+  { id: 'utility', label: 'ユーティリティ', emoji: '🧰' },
 ];
 
 export const apps: PortfolioApp[] = [
@@ -59,5 +60,25 @@ export const apps: PortfolioApp[] = [
     href: 'https://apps.apple.com/jp/app/%E8%96%AC%E3%81%AA%E3%81%BE%E3%81%88%E3%82%AB%E3%83%BC%E3%83%89/id6763898619',
     image: '/images/yaku-namae-card.png',
     imageAlt: '薬なまえカード アプリアイコン',
+  },
+  {
+    title: 'SELF LOVE',
+    description:
+      '自分を褒めてテンションをぶち上げるためだけのアプリ',
+    category: 'utility',
+    status: 'live',
+    href: 'https://apps.apple.com/jp/app/self-love/id6765992426',
+    image: '/images/self-love.png',
+    imageAlt: 'SELF LOVE アプリアイコン',
+  },
+  {
+    title: 'ScenarioTalk',
+    description:
+      '英会話のテンプレートを作成。\n発話せずに意思疎通がとれるアプリ\n思い通りの回答が得られます。',
+    category: 'utility',
+    status: 'live',
+    href: 'https://apps.apple.com/jp/app/scenariotalk/id6766811243',
+    image: '/images/scenariotalk.png',
+    imageAlt: 'ScenarioTalk アプリアイコン',
   },
 ];
