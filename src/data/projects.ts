@@ -1,4 +1,4 @@
-export type AppCategory = 'game' | 'memorize' | 'utility';
+export type AppCategory = 'game' | 'memorize' | 'utility' | 'web';
 
 export type AppStatus = 'live' | 'beta' | 'coming';
 
@@ -18,6 +18,7 @@ export const categories: { id: AppCategory; label: string; emoji: string }[] = [
   { id: 'game', label: 'ゲーム', emoji: '🎮' },
   { id: 'memorize', label: '暗記', emoji: '📇' },
   { id: 'utility', label: 'ユーティリティ', emoji: '🧰' },
+  { id: 'web', label: 'Webアプリ', emoji: '🌐' },
 ];
 
 export const apps: PortfolioApp[] = [
@@ -80,5 +81,15 @@ export const apps: PortfolioApp[] = [
     href: 'https://apps.apple.com/jp/app/scenariotalk/id6766811243',
     image: '/images/scenariotalk.png',
     imageAlt: 'ScenarioTalk アプリアイコン',
+  },
+  {
+    title: 'PharmShelf',
+    description:
+      '薬局の棚配置を可視化・最適化。\nExcel の薬剤名と使用頻度を読み込み、クリック操作で棚を整えます。',
+    category: 'web',
+    status: 'live',
+    href: 'https://pharmshelf.vercel.app',
+    image: '/images/pharmshelf.png',
+    imageAlt: 'PharmShelf — もう迷わない・聞く必要のない棚配置へ',
   },
 ];
