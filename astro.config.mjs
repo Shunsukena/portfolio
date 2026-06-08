@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
 /**
  * 本番のサイト URL（末尾 / 推奨・OGP の絶対パス用）。
@@ -9,5 +10,5 @@ const site = 'https://yanachanapps.pages.dev/';
 
 export default defineConfig({
   site,
-  integrations: [tailwind({ applyBaseStyles: true })],
+  integrations: [tailwind({ applyBaseStyles: true }), sitemap()],
 });
