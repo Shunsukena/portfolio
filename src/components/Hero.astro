@@ -8,44 +8,46 @@ const { brand, tagline } = Astro.props;
 ---
 
 <section
-  class="relative mx-auto w-full max-w-md lg:max-w-none px-4 lg:px-0 pb-6 pt-12 sm:pt-16"
+  class="relative mx-auto w-full max-w-md lg:max-w-none px-4 lg:px-0 pb-10 pt-16 sm:pt-20 lg:pt-24"
   aria-labelledby="hero-heading"
 >
   <p
-    class="mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm backdrop-blur"
+    class="mb-6 inline-flex items-center gap-2.5 rounded-full border border-cyan-200/60 bg-white/60 px-4 py-1.5 text-xs sm:text-sm font-bold text-cyan-800 shadow-sm backdrop-blur-md ring-1 ring-white/50"
   >
-    <span
-      class="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px] shadow-emerald-500/50"
-    />
+    <span class="relative flex h-2 w-2">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500 shadow-[0_0_8px] shadow-cyan-500/50"></span>
+    </span>
     indie apps · モバイル＆Web
   </p>
   <h1
     id="hero-heading"
-    class="font-display text-4xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-5xl sm:leading-tight"
+    class="font-display text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl lg:text-[4.5rem] lg:leading-[1.1] bg-gradient-to-br from-cyan-900 via-slate-800 to-cyan-700 bg-clip-text text-transparent pb-2"
   >
     {brand}
   </h1>
   <p
-    class="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 sm:text-lg"
+    class="mt-6 max-w-2xl text-pretty text-base font-medium leading-[1.8] text-slate-600 sm:text-lg sm:leading-[1.8] lg:text-xl lg:leading-[1.8]"
   >
     {tagline}
   </p>
-  <div class="mt-8 flex flex-wrap items-center gap-3">
+  <div class="mt-10 flex flex-wrap items-center gap-4">
     <a
       href="#apps"
-      class="inline-flex items-center justify-center rounded-xl bg-cyan-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-cyan-600/20 transition hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+      class="group inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-600 to-emerald-500 px-7 py-3.5 text-sm sm:text-base font-bold text-white shadow-lg shadow-cyan-600/30 transition-all hover:-translate-y-1 hover:shadow-cyan-600/40 hover:from-cyan-500 hover:to-emerald-400"
     >
       アプリを見る
+      <span class="transition-transform group-hover:translate-x-1">→</span>
     </a>
     <a
       href="https://x.com/Yanachan3pharma"
-      class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-800/10 bg-slate-900 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-slate-800"
+      class="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-slate-200/80 bg-white/80 px-7 py-3.5 text-sm sm:text-base font-bold text-slate-700 shadow-sm backdrop-blur-sm transition-all hover:-translate-y-1 hover:bg-slate-50 hover:shadow-md"
       rel="me noreferrer"
       target="_blank"
       aria-label="X（@Yanachan3pharma）をフォロー"
     >
       <svg
-        class="h-4 w-4 shrink-0"
+        class="h-4 w-4 shrink-0 sm:h-5 sm:w-5 text-cyan-600"
         viewBox="0 0 24 24"
         aria-hidden="true"
         fill="currentColor"
@@ -55,12 +57,6 @@ const { brand, tagline } = Astro.props;
         />
       </svg>
       フォロー
-    </a>
-    <a
-      href="#contact"
-      class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-800 shadow-sm transition hover:border-slate-300 hover:bg-slate-50"
-    >
-      お問い合わせ
     </a>
   </div>
 </section>
