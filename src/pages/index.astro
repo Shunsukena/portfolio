@@ -26,19 +26,18 @@ const formUrl = 'https://forms.gle/YQCRc1M4JLJRrVVq9';
         <div class="pb-4">
           <CategoryPills />
         </div>
-        <div class="hidden lg:block mt-8 px-4">
-          <ContactCta formUrl={formUrl} />
-        </div>
       </div>
 
       <!-- Right Column (Scrolls) -->
       <div class="lg:w-[65%] lg:py-12 flex flex-col min-h-0">
         <AppsByCategory />
-        <div class="block lg:hidden">
-          <ContactCta formUrl={formUrl} />
-        </div>
-        <SiteFooter />
       </div>
     </main>
+
+    <!-- Bottom Full Width Section -->
+    <div class="px-4 lg:px-8">
+      <ContactCta formUrl={formUrl} />
+    </div>
+    <SiteFooter />
   </div>
 </Layout>
