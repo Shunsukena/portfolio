@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import Hero from '../components/Hero.astro';
+import AppCarousel from '../components/AppCarousel.astro';
 import CategoryPills from '../components/CategoryPills.astro';
 import AppsByCategory from '../components/AppsByCategory.astro';
 import ContactCta from '../components/ContactCta.astro';
@@ -16,16 +17,44 @@ const formUrl = 'https://forms.gle/YQCRc1M4JLJRrVVq9';
 >
   <SiteHeader />
 
-  <main class="mx-auto w-full max-w-5xl px-5 sm:px-8">
-    <Hero
-      brand="yanachan apps"
-      tagline="薬剤師・薬局の業務効率化ツール（一包化監査、棚編集など）や、薬学生の国家試験対策（暗記）アプリを個人開発しています。現場や勉強のスキマ時間でサクッと使えるアプリをお試しください！"
-    />
+  <!-- 1. Hero: full-width title + description -->
+  <Hero
+    brand="yanachan apps"
+    tagline="薬剤師・薬局の業務効率化ツール（一包化監査、棚編集など）や、薬学生の国家試験対策（暗記）アプリを個人開発しています。現場や勉強のスキマ時間でサクッと使えるアプリをお試しください！"
+  />
 
-    <div class="py-6">
+  <!-- 2. App Carousel: full-width sliding showcase -->
+  <AppCarousel />
+
+  <!-- 3. Buttons + Category pills -->
+  <div class="mx-auto w-full max-w-5xl px-5 sm:px-8">
+    <div class="py-10 flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex flex-wrap items-center gap-4">
+        <a
+          href="#apps"
+          class="inline-flex items-center justify-center rounded-full bg-slate-900 px-8 py-3.5 text-sm font-medium tracking-wide text-white transition hover:bg-slate-700"
+        >
+          アプリを見る
+        </a>
+        <a
+          href="https://x.com/Yanachan3pharma"
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 px-8 py-3.5 text-sm font-medium tracking-wide text-slate-600 transition hover:border-slate-400 hover:text-slate-900"
+          rel="me noreferrer"
+          target="_blank"
+          aria-label="X（@Yanachan3pharma）をフォロー"
+        >
+          <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+          フォロー
+        </a>
+      </div>
       <CategoryPills />
     </div>
+  </div>
 
+  <!-- 4. App list by category -->
+  <main class="mx-auto w-full max-w-5xl px-5 sm:px-8">
     <AppsByCategory />
   </main>
 
