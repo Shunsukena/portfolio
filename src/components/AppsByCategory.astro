@@ -7,19 +7,16 @@ const byCategory = (id: AppCategory) => apps.filter((a) => a.category === id);
 
 <section
   id="apps"
-  class="mx-auto w-full max-w-md lg:max-w-none scroll-mt-8 px-4 lg:px-0 py-10"
+  class="mx-auto w-full scroll-mt-8 py-20"
   aria-labelledby="apps-heading"
 >
-  <div class="mb-6 flex flex-col gap-1">
-    <div>
-      <h2
-        id="apps-heading"
-        class="font-display text-2xl font-semibold tracking-tight text-slate-900"
-      >
-        アプリ
-      </h2>
-    </div>
-  </div>
+  <h2
+    id="apps-heading"
+    class="font-display text-2xl font-light tracking-tight text-slate-900 sm:text-3xl"
+  >
+    アプリ
+  </h2>
+  <div class="mt-2 h-px w-12 bg-slate-300"></div>
 
   {
     categories.map((cat) => {
@@ -28,25 +25,21 @@ const byCategory = (id: AppCategory) => apps.filter((a) => a.category === id);
         return null;
       }
       return (
-        <div id={`cat-${cat.id}`} class="scroll-mt-20">
-          <div class="mb-4 flex items-center gap-3 pr-1">
+        <div id={`cat-${cat.id}`} class="scroll-mt-20 mt-16 fade-up">
+          <div class="mb-8 flex items-center gap-3">
             <span class="text-2xl" aria-hidden="true">
               {cat.emoji}
             </span>
-            <h3 class="font-display text-2xl font-bold text-slate-800">
+            <h3 class="font-display text-xl font-normal tracking-wide text-slate-700">
               {cat.label}
             </h3>
-            <span class="h-px min-w-0 flex-1 bg-gradient-to-r from-slate-300/80 to-transparent" />
           </div>
-          <p class="mb-4 text-sm font-medium text-slate-500 lg:hidden" aria-hidden="true">
-            横にスワイプして他のアプリを表示
-          </p>
           <ul
-            class="h-scroll mb-10 w-full list-none [padding-inline:0] lg:grid lg:grid-cols-2 lg:gap-6 lg:overflow-visible lg:h-auto"
-            aria-label={`${cat.label}の一覧。`}
+            class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 list-none [padding-inline:0]"
+            aria-label={`${cat.label}の一覧`}
           >
             {list.map((app) => (
-              <li class="w-72 shrink-0 snap-center lg:w-auto">
+              <li>
                 <AppCard app={app} />
               </li>
             ))}

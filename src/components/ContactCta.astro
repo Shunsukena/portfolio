@@ -8,39 +8,27 @@ const { formUrl } = Astro.props;
 
 <section
   id="contact"
-  class="mx-auto w-full max-w-4xl scroll-mt-8 px-4 py-16"
+  class="scroll-mt-8 border-t border-slate-100 bg-slate-50 fade-up"
   aria-labelledby="contact-heading"
 >
-  <div
-    class="group relative overflow-hidden rounded-[2.5rem] p-1 sm:p-1.5 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-cyan-500/20"
-  >
-    <!-- Animated glowing border/background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-cyan-300 via-fuchsia-300 to-emerald-300 opacity-60 blur-xl group-hover:opacity-100 group-hover:duration-200 transition-opacity duration-1000"></div>
-    <div class="absolute inset-0 bg-gradient-to-br from-cyan-400 via-fuchsia-400 to-emerald-400 opacity-20"></div>
-    
-    <!-- Glass content -->
-    <div class="relative rounded-[2.25rem] border border-white/50 bg-white/80 backdrop-blur-2xl px-6 py-12 sm:p-16 text-center ring-1 ring-white/50">
-      <h2
-        id="contact-heading"
-        class="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl bg-gradient-to-r from-cyan-700 to-fuchsia-700 bg-clip-text text-transparent"
-      >
-        お問い合わせはフォームにて承ります
-      </h2>
-      <p class="mt-4 text-pretty text-slate-600 font-medium max-w-2xl mx-auto sm:text-lg">
-        コラボ・取材・不具合報告のほか、リクエストもお気軽にどうぞ。<br class="hidden sm:block" />追ってご返信します。
-      </p>
-      <a
-        href={formUrl}
-        class="mt-8 relative inline-flex group/btn items-center justify-center overflow-hidden rounded-2xl bg-cyan-600 px-8 py-4 text-sm sm:text-base font-bold text-white shadow-lg shadow-cyan-600/30 transition-all hover:scale-105 hover:shadow-cyan-600/40"
-        rel={formUrl.startsWith('mailto:') ? undefined : 'noreferrer'}
-        target={formUrl.startsWith('mailto:') ? undefined : '_blank'}
-      >
-        <span class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-emerald-400 opacity-0 transition-opacity duration-300 group-hover/btn:opacity-100"></span>
-        <span class="relative flex items-center gap-2">
-          {formUrl.startsWith('mailto:') ? 'メールを送る' : 'Googleフォームを開く'}
-          <svg class="w-4 h-4 transition-transform group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-        </span>
-      </a>
-    </div>
+  <div class="mx-auto max-w-5xl px-5 sm:px-8 py-24 sm:py-32 text-center">
+    <h2
+      id="contact-heading"
+      class="font-display text-2xl font-light tracking-tight text-slate-900 sm:text-3xl"
+    >
+      お問い合わせ
+    </h2>
+    <div class="mx-auto mt-2 h-px w-12 bg-slate-300"></div>
+    <p class="mt-6 text-base text-slate-500 max-w-lg mx-auto leading-[1.8]">
+      コラボ・取材・不具合報告のほか、リクエストもお気軽にどうぞ。<br class="hidden sm:block" />追ってご返信します。
+    </p>
+    <a
+      href={formUrl}
+      class="mt-10 inline-flex items-center justify-center rounded-full bg-slate-900 px-10 py-4 text-sm font-medium tracking-wide text-white transition hover:bg-slate-700"
+      rel={formUrl.startsWith('mailto:') ? undefined : 'noreferrer'}
+      target={formUrl.startsWith('mailto:') ? undefined : '_blank'}
+    >
+      {formUrl.startsWith('mailto:') ? 'メールを送る' : 'Googleフォームを開く'}
+    </a>
   </div>
 </section>

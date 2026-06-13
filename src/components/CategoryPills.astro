@@ -9,14 +9,14 @@ const pills = categories.map((c) => ({
 ---
 
 <nav
-  class="mx-auto flex w-full max-w-md flex-col gap-2 px-4 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:flex-row sm:flex-nowrap sm:items-center sm:gap-2 sm:overflow-x-auto sm:overscroll-x-contain"
+  class="mx-auto flex w-full flex-wrap items-center justify-start gap-3 sm:justify-center"
   aria-label="カテゴリへジャンプ"
 >
   {
     pills.map((c) => (
       <a
         href={c.href}
-        class="inline-flex w-full shrink-0 items-center justify-center gap-1.5 rounded-full border border-slate-200 bg-white/90 px-3.5 py-1.5 text-sm text-slate-700 shadow-sm transition hover:border-cyan-200 hover:bg-cyan-50/80 hover:text-cyan-800 sm:w-auto sm:justify-start"
+        class="inline-flex shrink-0 items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-400 hover:text-slate-900"
       >
         <span aria-hidden="true" class="select-none text-base leading-none">
           {c.emoji}

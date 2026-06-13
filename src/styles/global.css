@@ -10,40 +10,30 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply min-h-svh font-sans antialiased text-slate-800;
-    background-color: oklch(0.98 0.015 240);
-    background-image:
-      radial-gradient(at 0% 0%, oklch(0.96 0.05 230 / 0.7) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, oklch(0.95 0.04 260 / 0.6) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, oklch(0.94 0.05 200 / 0.5) 0px, transparent 50%);
-    background-attachment: fixed;
+    @apply min-h-svh font-sans antialiased text-slate-700 bg-white;
   }
   ::selection {
-    @apply bg-cyan-200/80 text-slate-900;
+    @apply bg-slate-200 text-slate-900;
   }
   a:focus-visible {
-    @apply rounded-sm outline outline-2 outline-offset-2 outline-cyan-600/70;
+    @apply rounded-sm outline outline-2 outline-offset-2 outline-slate-400;
   }
 }
 
 @layer utilities {
   .legal-page {
-    @apply max-w-2xl mx-auto py-12 px-6;
+    @apply max-w-2xl mx-auto py-16 px-6;
   }
-  .h-scroll {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 1.5rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scroll-padding-left: 1rem;
-    scroll-padding-right: 1rem;
-    scrollbar-width: none;
+
+  /* Scroll-driven fade-up animation */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  .h-scroll::-webkit-scrollbar {
-    display: none;
+  .fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
