@@ -14,10 +14,11 @@ const formUrl = 'https://forms.gle/YQCRc1M4JLJRrVVq9';
   title="yanachan apps | 薬剤師・薬局・薬学生向けの便利アプリ＆国試対策ツール"
   description="薬剤師・薬局の業務効率化（一包化監査、棚編集など）や、薬学生の国家試験対策（薬理・薬剤の暗記）に役立つアプリを開発・公開しています。"
 >
-  <div class="app-shell relative mx-auto w-full">
-    <main>
-      <div class="app-region-top">
-        <SiteHeader />
+  <div class="relative mx-auto w-full max-w-7xl">
+    <SiteHeader />
+    <main class="flex flex-col lg:flex-row lg:gap-12 px-0 lg:px-8">
+      <!-- Left Column (Sticky on PC) -->
+      <div class="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:w-[35%] lg:overflow-y-auto lg:pb-10 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <Hero
           brand="yanachan apps"
           tagline="薬剤師・薬局の業務効率化ツール（一包化監査、棚編集など）や、薬学生の国家試験対策（暗記）アプリを個人開発しています。現場や勉強のスキマ時間でサクッと使えるアプリをお試しください！"
@@ -25,12 +26,19 @@ const formUrl = 'https://forms.gle/YQCRc1M4JLJRrVVq9';
         <div class="pb-4">
           <CategoryPills />
         </div>
+        <div class="hidden lg:block mt-8 px-4">
+          <ContactCta formUrl={formUrl} />
+        </div>
       </div>
-      <div class="app-region-bottom">
+
+      <!-- Right Column (Scrolls) -->
+      <div class="lg:w-[65%] lg:py-12 flex flex-col min-h-0">
         <AppsByCategory />
-        <ContactCta formUrl={formUrl} />
+        <div class="block lg:hidden">
+          <ContactCta formUrl={formUrl} />
+        </div>
+        <SiteFooter />
       </div>
     </main>
-    <SiteFooter />
   </div>
 </Layout>

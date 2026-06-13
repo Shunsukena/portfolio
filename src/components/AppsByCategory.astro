@@ -7,7 +7,7 @@ const byCategory = (id: AppCategory) => apps.filter((a) => a.category === id);
 
 <section
   id="apps"
-  class="mx-auto w-full max-w-md scroll-mt-8 px-4 py-10"
+  class="mx-auto w-full max-w-md lg:max-w-none scroll-mt-8 px-4 lg:px-0 py-10"
   aria-labelledby="apps-heading"
 >
   <div class="mb-6 flex flex-col gap-1">
@@ -38,15 +38,15 @@ const byCategory = (id: AppCategory) => apps.filter((a) => a.category === id);
             </h3>
             <span class="h-px min-w-0 flex-1 bg-gradient-to-r from-slate-300/80 to-transparent" />
           </div>
-          <p class="mb-2 text-xs text-slate-500" aria-hidden="true">
+          <p class="mb-2 text-xs text-slate-500 lg:hidden" aria-hidden="true">
             横にスワイプして他のアプリを表示
           </p>
           <ul
-            class="h-scroll mb-10 w-full list-none [padding-inline:0]"
-            aria-label={`${cat.label}の一覧。左右にスワイプで閲覧できます。`}
+            class="h-scroll mb-10 w-full list-none [padding-inline:0] lg:grid lg:grid-cols-2 lg:gap-6 lg:overflow-visible lg:h-auto"
+            aria-label={`${cat.label}の一覧。`}
           >
             {list.map((app) => (
-              <li class="w-72 shrink-0 snap-center">
+              <li class="w-72 shrink-0 snap-center lg:w-auto">
                 <AppCard app={app} />
               </li>
             ))}

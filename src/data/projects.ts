@@ -23,6 +23,16 @@ export const categories: { id: AppCategory; label: string; emoji: string }[] = [
 
 export const apps: PortfolioApp[] = [
   {
+    title: 'CYP相互作用バトル',
+    description:
+      'CYP3A4や2D6などの代謝酵素を駆使するカードバトル！\n薬物相互作用をゲーム感覚で学ぼう。',
+    category: 'game',
+    status: 'live',
+    href: 'https://apps.apple.com/jp/app/cyp%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E3%83%90%E3%83%88%E3%83%AB/id6778984204',
+    image: '/images/cyp-battle.png',
+    imageAlt: 'CYP相互作用バトル アプリアイコン',
+  },
+  {
     title: '薬理道場',
     description:
       '敵を倒しながら薬理の勉強！\n君はどこまで進める！？',
