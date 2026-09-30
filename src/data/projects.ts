@@ -29,7 +29,7 @@ export const apps: PortfolioApp[] = [
     category: 'game',
     status: 'live',
     href: 'https://apps.apple.com/jp/app/%E6%8A%97%E8%8F%8C%E8%96%ACRPG/id6817147432',
-    image: '/images/koukinrpg.png',
+    image: '/images/koukinRPG.png',
     imageAlt: '抗菌薬RPG アプリアイコン',
   },
   {
