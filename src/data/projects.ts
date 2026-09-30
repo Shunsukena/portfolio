@@ -23,6 +23,16 @@ export const categories: { id: AppCategory; label: string; emoji: string }[] = [
 
 export const apps: PortfolioApp[] = [
   {
+    title: '抗菌薬RPG',
+    description:
+      '問題を解いて強くなれ！\n抗菌薬RPG！',
+    category: 'game',
+    status: 'live',
+    href: 'https://apps.apple.com/jp/app/%E6%8A%97%E8%8F%8C%E8%96%ACRPG/id6817147432',
+    image: '/images/koukinrpg.png',
+    imageAlt: '抗菌薬RPG アプリアイコン',
+  },
+  {
     title: 'CYP相互作用バトル',
     description:
       'CYP3A4や2D6などの代謝酵素を駆使するカードバトル！\n薬物相互作用をゲーム感覚で学ぼう。',
